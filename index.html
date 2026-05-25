@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Blooming Flowers for Someone Special</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="./dist/styles.css" />
+</head>
+<body class="bg-gradient-to-b from-rose-50 via-purple-50 to-white text-[#3f2b4a] overflow-hidden">
+  <div class="pointer-events-none fixed inset-0 -z-10 overflow-hidden">
+    <div class="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(255,224,236,0.8),transparent_35%),radial-gradient(circle_at_70%_10%,rgba(235,188,255,0.26),transparent_22%),radial-gradient(circle_at_20%_80%,rgba(255,235,213,0.22),transparent_16%)] blur-3xl"></div>
+    <div id="petalField" class="absolute inset-0"></div>
+    <div class="absolute inset-0 bg-[radial-gradient(circle,rgba(255,255,255,0.85),transparent_15%)] bg-[length:4px_4px] opacity-20"></div>
+  </div>
+
+  <header class="fixed inset-x-0 top-0 z-30 flex flex-wrap items-center justify-between gap-3 px-6 py-5">
+    <span class="font-display text-2xl text-[#683a6d]">Blooming Love</span>
+    <div class="flex flex-wrap gap-3">
+      <button id="nightModeToggle" class="rounded-full border border-white/30 bg-white/40 px-4 py-2 text-sm text-[#5c2f56] transition hover:-translate-y-0.5 hover:bg-white/70">Moonlight</button>
+      <button id="musicToggle" class="rounded-full border border-white/30 bg-white/40 px-4 py-2 text-sm text-[#5c2f56] transition hover:-translate-y-0.5 hover:bg-white/70">Play Music</button>
+    </div>
+  </header>
+
+  <main id="appMain" class="relative h-screen w-screen pt-28 overflow-hidden">
+    <section id="hero" class="section absolute inset-0 z-30 grid min-h-screen max-w-7xl gap-10 px-6 py-10 lg:grid-cols-[1.1fr_0.9fr]">
+      <div class="rounded-[32px] border border-white/35 bg-white/75 p-10 shadow-soft backdrop-blur-xl">
+        <p class="mb-5 uppercase tracking-[0.3em] text-sm text-[#8c5d81]">A soft garden of whispers and petals</p>
+        <h1 class="font-display text-[clamp(2.8rem,5vw,4.6rem)] leading-[0.95]">For Someone Who Makes My World Bloom <span class="inline-block rotate-[-4deg]">🌸</span></h1>
+        <p class="mt-8 max-w-xl text-base leading-8 text-[#6d4f70]">In every gentle breeze and every sunrise, your love feels like a thousand flowers opening just for me. This digital bouquet is my heart written in pastel light.</p>
+        <button id="openHeart" class="mt-10 inline-flex rounded-full bg-gradient-to-r from-rose-200 to-pink-300 px-8 py-4 text-sm font-semibold text-[#401f3d] transition hover:-translate-y-1 hover:shadow-[0_20px_50px_rgba(255,160,190,0.3)]">Open My Heart</button>
+      </div>
+      <div class="relative flex items-center justify-center">
+        <div class="relative h-[420px] w-[420px] rounded-full border border-white/30 bg-white/25 shadow-soft backdrop-blur-xl">
+          <div class="absolute inset-10 rounded-full border border-white/40 animate-pulse"></div>
+          <div class="absolute inset-24 rounded-full border border-white/35 animate-pulse delay-100"></div>
+          <div class="absolute inset-40 rounded-full border border-white/40 animate-pulse delay-200"></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="message" class="section absolute inset-0 hidden z-20 mx-auto max-w-7xl px-6 py-10 flex items-center">
+      <div class="rounded-[32px] border border-white/35 bg-white/75 p-10 shadow-soft backdrop-blur-xl">
+        <span class="mb-4 block uppercase tracking-[0.3em] text-sm text-[#8c5d81]">Love Message</span>
+        <h2 class="font-display text-4xl font-semibold text-[#49304d]">What my heart wants to tell you</h2>
+        <p id="typingText" class="typing-text mt-8 min-h-[7rem] whitespace-pre-wrap text-lg leading-8 text-[#6d4f70] font-display"></p>
+        <div class="mt-8 flex gap-4">
+          <button id="seeBouquet" class="inline-flex rounded-full bg-gradient-to-r from-rose-200 to-pink-300 px-6 py-3 text-sm font-semibold text-[#401f3d] transition hover:-translate-y-0.5">See My Bouquet</button>
+          <button id="openLetter" class="inline-flex rounded-full border border-white/30 bg-white/40 px-6 py-3 text-sm text-[#5c2f56] transition hover:-translate-y-0.5">Read My Confession</button>
+        </div>
+      </div>
+    </section>
+
+    <section id="bouquet" class="section absolute inset-0 hidden z-10 mx-auto max-w-7xl px-6 py-10 flex items-start">
+      <div class="mb-10 max-w-3xl">
+        <span class="mb-4 block uppercase tracking-[0.3em] text-sm text-[#8c5d81]">Interactive Bouquet</span>
+        <h2 class="text-4xl font-semibold text-[#49304d]">Hover over each flower to make it glow</h2>
+      </div>
+      <div class="grid gap-8 lg:grid-cols-4">
+        <article class="flower-card group relative overflow-hidden rounded-[32px] border border-white/35 bg-white/80 p-6 shadow-soft transition duration-300 hover:-translate-y-3" data-note="Your laughter is the melody that warms my heart.">
+          <div class="absolute left-1/2 top-28 h-28 w-28 -translate-x-1/2 rounded-full bg-gradient-to-br from-rose-200 to-pink-200 shadow-[0_20px_40px_rgba(255,176,202,0.28)]"></div>
+          <div class="relative z-10 flex justify-center">
+            <div class="flower-face h-28 w-28 rounded-full bg-gradient-to-br from-rose-100 via-pink-100 to-white shadow-inner"></div>
+          </div>
+          <div class="petal petal-1 absolute left-10 top-10 h-20 w-20 rounded-[55%_45%_65%_35%] bg-gradient-to-br from-rose-200 via-pink-200 to-white shadow-xl transition duration-300 group-hover:scale-105"></div>
+          <div class="petal petal-2 absolute right-10 top-14 h-20 w-20 rounded-[55%_45%_65%_35%] bg-gradient-to-br from-pink-200 via-purple-200 to-white shadow-xl transition duration-300 group-hover:scale-105"></div>
+          <div class="petal petal-3 absolute left-14 bottom-10 h-20 w-20 rounded-[55%_45%_65%_35%] bg-gradient-to-br from-purple-200 via-pink-100 to-white shadow-xl transition duration-300 group-hover:scale-105"></div>
+          <p class="mt-40 rounded-3xl bg-white/85 px-4 py-3 text-center text-sm text-[#6b3d65] transition">Tap to reveal</p>
+        </article>
+        <article class="flower-card group relative overflow-hidden rounded-[32px] border border-white/35 bg-white/80 p-6 shadow-soft transition duration-300 hover:-translate-y-3" data-note="I hid a love letter for you inside this bloom.">
+          <div class="absolute left-1/2 top-28 h-28 w-28 -translate-x-1/2 rounded-full bg-gradient-to-br from-rose-200 to-pink-200 shadow-[0_20px_40px_rgba(255,176,202,0.28)]"></div>
+          <div class="relative z-10 flex justify-center">
+            <div class="flower-face h-28 w-28 rounded-full bg-gradient-to-br from-rose-100 via-pink-100 to-white shadow-inner"></div>
+          </div>
+          <div class="petal petal-1 absolute left-10 top-10 h-20 w-20 rounded-[55%_45%_65%_35%] bg-gradient-to-br from-rose-200 via-pink-200 to-white shadow-xl transition duration-300 group-hover:scale-105"></div>
+          <div class="petal petal-2 absolute right-10 top-14 h-20 w-20 rounded-[55%_45%_65%_35%] bg-gradient-to-br from-pink-200 via-purple-200 to-white shadow-xl transition duration-300 group-hover:scale-105"></div>
+          <div class="petal petal-3 absolute left-14 bottom-10 h-20 w-20 rounded-[55%_45%_65%_35%] bg-gradient-to-br from-purple-200 via-pink-100 to-white shadow-xl transition duration-300 group-hover:scale-105"></div>
+          <p class="mt-40 rounded-3xl bg-white/85 px-4 py-3 text-center text-sm text-[#6b3d65] transition">Special Flower</p>
+        </article>
+        <article class="flower-card group relative overflow-hidden rounded-[32px] border border-white/35 bg-white/80 p-6 shadow-soft transition duration-300 hover:-translate-y-3" data-note="Every sunrise feels brighter because you are by my side.">
+          <div class="absolute left-1/2 top-28 h-28 w-28 -translate-x-1/2 rounded-full bg-gradient-to-br from-rose-200 to-pink-200 shadow-[0_20px_40px_rgba(255,176,202,0.28)]"></div>
+          <div class="relative z-10 flex justify-center">
+            <div class="flower-face h-28 w-28 rounded-full bg-gradient-to-br from-rose-100 via-pink-100 to-white shadow-inner"></div>
+          </div>
+          <div class="petal petal-1 absolute left-10 top-10 h-20 w-20 rounded-[55%_45%_65%_35%] bg-gradient-to-br from-rose-200 via-pink-200 to-white shadow-xl transition duration-300 group-hover:scale-105"></div>
+          <div class="petal petal-2 absolute right-10 top-14 h-20 w-20 rounded-[55%_45%_65%_35%] bg-gradient-to-br from-pink-200 via-purple-200 to-white shadow-xl transition duration-300 group-hover:scale-105"></div>
+          <div class="petal petal-3 absolute left-14 bottom-10 h-20 w-20 rounded-[55%_45%_65%_35%] bg-gradient-to-br from-purple-200 via-pink-100 to-white shadow-xl transition duration-300 group-hover:scale-105"></div>
+          <p class="mt-40 rounded-3xl bg-white/85 px-4 py-3 text-center text-sm text-[#6b3d65] transition">Tap to reveal</p>
+        </article>
+        <article class="flower-card group relative overflow-hidden rounded-[32px] border border-white/35 bg-white/80 p-6 shadow-soft transition duration-300 hover:-translate-y-3" data-note="Like petals opening to the sun, I open myself to you.">
+          <div class="absolute left-1/2 top-28 h-28 w-28 -translate-x-1/2 rounded-full bg-gradient-to-br from-rose-200 to-pink-200 shadow-[0_20px_40px_rgba(255,176,202,0.28)]"></div>
+          <div class="relative z-10 flex justify-center">
+            <div class="flower-face h-28 w-28 rounded-full bg-gradient-to-br from-rose-100 via-pink-100 to-white shadow-inner"></div>
+          </div>
+          <div class="petal petal-1 absolute left-10 top-10 h-20 w-20 rounded-[55%_45%_65%_35%] bg-gradient-to-br from-rose-200 via-pink-200 to-white shadow-xl transition duration-300 group-hover:scale-105"></div>
+          <div class="petal petal-2 absolute right-10 top-14 h-20 w-20 rounded-[55%_45%_65%_35%] bg-gradient-to-br from-pink-200 via-purple-200 to-white shadow-xl transition duration-300 group-hover:scale-105"></div>
+          <div class="petal petal-3 absolute left-14 bottom-10 h-20 w-20 rounded-[55%_45%_65%_35%] bg-gradient-to-br from-purple-200 via-pink-100 to-white shadow-xl transition duration-300 group-hover:scale-105"></div>
+          <p class="mt-40 rounded-3xl bg-white/85 px-4 py-3 text-center text-sm text-[#6b3d65] transition">Tap to reveal</p>
+        </article>
+      </div>
+      <div class="mt-10 rounded-[32px] border border-white/35 bg-white/80 p-8 shadow-soft backdrop-blur-xl">
+        <p class="mb-3 text-sm uppercase tracking-[0.3em] text-[#8c5d81]">Flower Note</p>
+        <p id="noteText" class="text-base leading-8 text-[#6d4f70]">Hover or click a flower to see your message.</p>
+        <div class="mt-6">
+          <button id="toMemories" class="inline-flex rounded-full bg-gradient-to-r from-rose-200 to-pink-300 px-6 py-3 text-sm font-semibold text-[#401f3d] transition hover:-translate-y-0.5">Remember Our Moments</button>
+        </div>
+      </div>
+    </section>
+
+    <section id="memories" class="section absolute inset-0 hidden z-5 mx-auto max-w-7xl px-6 py-10 flex items-start">
+      <div class="mb-10 max-w-3xl">
+        <span class="mb-4 block uppercase tracking-[0.3em] text-sm text-[#8c5d81]">Memories</span>
+        <h2 class="text-4xl font-semibold text-[#49304d]">Moments captured like petals in time</h2>
+      </div>
+      <div class="grid gap-8 lg:grid-cols-3">
+        <article class="polaroid rounded-[32px] border border-white/35 bg-white/85 p-6 shadow-soft transition duration-300 hover:-translate-y-2">
+          <div class="photo h-56 rounded-[24px] bg-gradient-to-br from-rose-200 to-pink-100"></div>
+          <p class="mt-6 text-sm text-[#7b5f79]">Our first sunset</p>
+        </article>
+        <article class="polaroid rounded-[32px] border border-white/35 bg-white/85 p-6 shadow-soft transition duration-300 hover:-translate-y-2">
+          <div class="photo h-56 rounded-[24px] bg-gradient-to-br from-purple-200 to-pink-100"></div>
+          <p class="mt-6 text-sm text-[#7b5f79]">The day we danced in the rain</p>
+        </article>
+        <article class="polaroid rounded-[32px] border border-white/35 bg-white/85 p-6 shadow-soft transition duration-300 hover:-translate-y-2">
+          <div class="photo h-56 rounded-[24px] bg-gradient-to-br from-sky-200 to-rose-100"></div>
+          <p class="mt-6 text-sm text-[#7b5f79]">Soft moonlit whispers</p>
+        </article>
+      </div>
+    </section>
+
+    <section id="final" class="section absolute inset-0 hidden z-0 mx-auto max-w-7xl px-6 py-10 text-center flex items-center justify-center">
+      <div class="flex justify-center">
+        <div class="giant-flower relative h-80 w-80 rounded-full bg-gradient-to-br from-pink-100 via-rose-200 to-violet-200 shadow-[0_0_80px_rgba(255,192,212,0.34)]"></div>
+      </div>
+      <div class="mt-10 rounded-[32px] border border-white/35 bg-white/75 p-10 shadow-soft backdrop-blur-xl">
+        <span class="mb-3 block uppercase tracking-[0.3em] text-sm text-[#8c5d81]">Final Surprise</span>
+        <h2 class="text-4xl font-semibold text-[#49304d]">You are the most beautiful flower in my life <span>💖</span></h2>
+        <p class="mt-6 text-base leading-8 text-[#6d4f70]">May this garden shine forever with the warmth you bring to my days.</p>
+        <div class="mt-8">
+          <button id="restartFlow" class="inline-flex rounded-full bg-gradient-to-r from-rose-200 to-pink-300 px-6 py-3 text-sm font-semibold text-[#401f3d] transition hover:-translate-y-0.5">Restart the Garden</button>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <div class="fixed right-5 bottom-5 z-30">
+    <div class="rounded-[28px] border border-white/35 bg-white/80 px-5 py-4 shadow-soft backdrop-blur-xl">
+      <span class="block text-[0.75rem] uppercase tracking-[0.28em] text-[#8c5d81]">Time Since I Fell For You</span>
+      <div id="timeSince" class="mt-3 text-lg font-semibold text-[#6a3d68]">00d 00h 00m 00s</div>
+    </div>
+  </div>
+
+  <div id="loveLetterModal" class="love-letter-modal fixed inset-0 z-40 grid place-items-center bg-[rgba(12,8,18,0.68)] px-6 py-12 opacity-0 invisible transition-opacity duration-300">
+    <div class="modal-card relative w-full max-w-xl">
+      <button id="closeModal" class="modal-close">×</button>
+      <div class="modal-content">
+        <h3 class="modal-title">A Letter for You</h3>
+        <div class="letter-sheet mt-4" id="modalBody">
+          <p class="mb-4">To the one who blooms in my heart: every petal, every heartbeat, every quiet moment is a love letter written just for you.</p>
+          <p class="mb-0">Thank you for letting me grow in the warmth of your gaze.</p>
+        </div>
+        <div class="modal-footer">
+          <button id="closeNote" class="inline-flex rounded-full bg-gradient-to-r from-rose-200 to-pink-300 px-6 py-3 text-sm font-semibold text-[#401f3d] transition hover:-translate-y-0.5">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="./dist/script.js" type="module"></script>
+</body>
+</html>

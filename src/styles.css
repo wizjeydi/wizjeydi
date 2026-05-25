@@ -1,0 +1,135 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html,
+  body {
+    overflow: hidden;
+  }
+
+  main {
+    overflow-y: auto;
+    scroll-behavior: smooth;
+  }
+
+  body {
+    font-family: 'Inter', sans-serif;
+    background-color: #fdf4fb;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+
+  body::-webkit-scrollbar,
+  main::-webkit-scrollbar {
+    display: none;
+  }
+
+  .font-display {
+    font-family: 'Great Vibes', cursive;
+  }
+}
+
+@layer components {
+  .section {
+    transition: opacity 0.8s ease, transform 0.8s ease;
+  }
+
+  .typing-text {
+    position: relative;
+  }
+
+  .typing-text::after {
+    content: '|';
+    position: absolute;
+    right: -18px;
+    top: 0;
+    color: #c35686;
+    animation: blink 1s step-end infinite;
+  }
+}
+
+@layer components {
+  .love-letter-modal {
+    display: grid;
+    place-items: center;
+  }
+
+  .modal-card {
+    max-width: 740px;
+    width: 100%;
+    border-radius: 18px;
+    padding: 2.25rem;
+    position: relative;
+    background: linear-gradient(180deg, #fff 0%, #fffefc 100%);
+    box-shadow: 0 24px 80px rgba(17, 8, 28, 0.45);
+    border: 1px solid rgba(255,255,255,0.6);
+    font-family: 'Great Vibes', cursive;
+  }
+
+  .modal-card .letter-sheet {
+    background: repeating-linear-gradient(
+      to bottom,
+      rgba(0,0,0,0.02) 0px,
+      rgba(0,0,0,0.02) 1px,
+      rgba(255,255,255,0) 1px,
+      rgba(255,255,255,0) 40px
+    );
+    border-radius: 12px;
+    padding: 1.6rem;
+    color: #5b3753;
+    line-height: 1.7;
+    font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+    font-size: 1rem;
+    min-height: 180px;
+  }
+
+  .modal-card .modal-title {
+    font-family: 'Great Vibes', cursive;
+    font-size: 2.4rem;
+    color: #4d2b4a;
+    margin-bottom: 0.5rem;
+  }
+
+  .modal-card .modal-close {
+    position: absolute;
+    right: 0.75rem;
+    top: 0.75rem;
+    background: rgba(255,255,255,0.8);
+    border-radius: 9999px;
+    width: 44px;
+    height: 44px;
+    display: grid;
+    place-items: center;
+    font-size: 1.05rem;
+    color: #5c305f;
+    border: none;
+  }
+
+  .modal-card .modal-footer {
+    display: flex;
+    justify-content: flex-end;
+    gap: 0.75rem;
+    margin-top: 1rem;
+  }
+
+  .love-letter-modal.open {
+    opacity: 1 !important;
+    visibility: visible !important;
+  }
+}
+
+@layer components {
+  .flower-face {
+    box-shadow: inset 0 10px 20px rgba(255, 255, 255, 0.5), 0 16px 35px rgba(196, 91, 137, 0.16);
+  }
+
+  .shadow-soft {
+    box-shadow: 0 24px 80px rgba(109, 58, 97, 0.16);
+  }
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 0; }
+  50% { opacity: 1; }
+}
